@@ -4,9 +4,7 @@ import Filter from './Filter/Filter';
 import ContactForm from './ContactForm/ContactForm';
 
 export const App = () => {
-  const [contacts, setcontacts] = useState(
-    JSON.parse(localStorage.getItem('contacts'))
-  );
+  const [contacts, setcontacts] = useState([]);
 
   const [filtered, setfiltered] = useState('');
 
