@@ -8,14 +8,14 @@ export const App = () => {
     JSON.parse(localStorage.getItem('contacts'))
   );
 
-  const [filter, setfilter] = useState('');
+  const [filtered, setfiltered] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   const handleFilterChange = e => {
-    setfilter(e.target.value);
+    setfiltered(e.target.value);
   };
 
   const addContact = newContact => {
@@ -36,7 +36,7 @@ export const App = () => {
 
   const getFilteredContacts = () => {
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+      contact.name.toLowerCase().includes(filtered.toLowerCase())
     );
   };
 
@@ -46,7 +46,7 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm onSubmit={addContact} />
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={handleFilterChange} />
+      <Filter value={filtered} onChange={handleFilterChange} />
       <ContactList
         contacts={filteredContacts}
         onDeleteContact={deleteContact}
