@@ -5,12 +5,16 @@ const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const handleNameChange = e => {
-    setName(e.target.value);
-  };
-
-  const handleNumberChange = e => {
-    setNumber(e.target.value);
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'number':
+        return setNumber(value);
+      default:
+        return;
+    }
   };
 
   const handleSubmit = e => {
@@ -32,7 +36,7 @@ const ContactForm = ({ onSubmit }) => {
           pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           value={name}
-          onChange={handleNameChange}
+          onChange={handleInputChange}
           required
         />
       </label>
